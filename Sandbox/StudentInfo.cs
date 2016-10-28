@@ -43,20 +43,19 @@ namespace Sandbox
 
         // Given an id, return the score average for the student with that id.
         // If no student exists with the given id, return 0 (zero).
-        public int GetAverageForStudent(int id) // SOLVE MOFO!!
+        public int GetAverageForStudent(int id)
         {
             if (students.ContainsKey(id))
             {
-                int studentAverage = 0;
-                studentAverage = 0 + 0;
-
-                return studentAverage;
+                
+                return students[id].GetScoreAverage(); // returns the element on the list with the keyvalue [id] and then
+                                                       // makes use of the method found under student.cs which calculates the 
+                                                       // average score.
             }
             else
             {
                 return 0;
             }
-            
         }
 
         // Calculate the total test score average for ALL students
@@ -64,15 +63,15 @@ namespace Sandbox
         // TIP: Use the method GetAllStudentId and a loop...
         public int GetTotalAverage()  // SOLVE IT MOFO!
         {
-            foreach (var item in students)
-            {
-                int Studentavg = 0;
-                Studentavg = 2 / 2;
-                return Studentavg;
-                
-
+            int sum = 0;
+            List<int> listOfAllStudentID = GetAllStudentId();           // Make use of the GetallStudentId to make a list
+                                                                        // this list is then run through foreach loop by 
+            foreach (var item in listOfAllStudentID)                    // + GetAverageForStudent method (0+method) all the 
+            {                                                           // averages put together makes the over all average.
+                sum = sum + GetAverageForStudent(item);
             }
-            return 0;
+
+           return sum;
             
         }
 
